@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
 //        applicationId "com.base.frame"
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion 16
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -19,7 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -32,4 +31,11 @@ dependencies {
     api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
     api 'jp.wasabeef:glide-transformations:3.3.0'
     api 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+    api 'com.tencent:mmkv:1.0.10'
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    api 'com.squareup.okhttp3:okhttp:3.11.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 }
