@@ -1,6 +1,9 @@
 package com.lx.frame.request;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.base.frame.basic.BaseActivity;
 import com.base.frame.http.HttpDisposable;
@@ -10,6 +13,8 @@ import com.lx.frame.R;
 import com.lx.frame.common.APIConstants;
 import com.lx.frame.common.HttpRequest;
 import com.lx.frame.entity.LoginData;
+import com.qmuiteam.qmui.util.QMUIColorHelper;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,11 +24,14 @@ import butterknife.ButterKnife;
 
 public class RequestActivity extends BaseActivity {
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        color = R.color.colorAccent;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
         ButterKnife.bind(this);
+        request();
     }
 
     /**
@@ -37,36 +45,6 @@ public class RequestActivity extends BaseActivity {
                 .subscribe(new HttpDisposable<LoginData>() {
                     @Override
                     public void success(LoginData data) {
-
-                    }
-                });
-    }
-
-    /**
-     * 上传一张图片
-     */
-    private void upload(String path) {
-        HttpRequest.getInstance(APIConstants.API_UPLOAD_IMAGE)
-                .upload(UploadUtils.getMultipartBody(path))
-                .compose(HttpFactory.<List<String>>schedulers())
-                .subscribe(new HttpDisposable<List<String>>() {
-                    @Override
-                    public void success(List<String> data) {
-
-                    }
-                });
-    }
-
-    /**
-     * 上传多张图片
-     */
-    private void uploads(List<String> path) {
-        HttpRequest.getInstance(APIConstants.API_UPLOAD_IMAGE)
-                .uploads(UploadUtils.getMultipartBodysForPath(path))
-                .compose(HttpFactory.<List<String>>schedulers())
-                .subscribe(new HttpDisposable<List<String>>() {
-                    @Override
-                    public void success(List<String> data) {
 
                     }
                 });
