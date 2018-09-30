@@ -11,9 +11,11 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ResponseConverterFactory extends Converter.Factory {
 
@@ -37,6 +39,11 @@ public class ResponseConverterFactory extends Converter.Factory {
         return new BaseResponseBodyConverter(type);
     }
 
+    @Override
+    public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
+        return GsonConverterFactory.create().requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit);
+    }
+
     private class BaseResponseBodyConverter<T> implements Converter<ResponseBody, T> {
         private Type mType;
 
@@ -51,21 +58,13 @@ public class ResponseConverterFactory extends Converter.Factory {
                 if (TextUtils.isEmpty(strResponse)) {
                     throw new HttpException("返回值是空的—-—");
                 }
-                JSONObject jsonObject = new JSONObject(strResponse);
-                int state = jsonObject.getInt(HttpFactory.httpResponse.stateName);
-                if (state == HttpFactory.httpResponse.successState) {
-                    String strData = jsonObject.getString(HttpFactory.httpResponse.dataName);
-                    object = mGson.fromJson(strData, mType);
+                if (HttpFactory.httpResponseInterface == null) {
+                    throw new HttpException("请实现接口HttpResponseInterface—-—");
                 } else {
-                    if (HttpFactory.httpExceptionInterface != null) {
-                        HttpFactory.httpExceptionInterface.getHttpExceptionState(state);
-                    }
-                    String msg = jsonObject.getString(HttpFactory.httpResponse.msgName);
-                    throw new HttpException(msg);
+                    String strData = HttpFactory.httpResponseInterface.getResponseData(mGson, strResponse);
+                    object = mGson.fromJson(strData, mType);
                 }
-            } catch (JSONException e) {
-                throw new HttpException("解析异常—-—");
-            } catch (IOException e) {
+            } catch (Exception e) {
                 throw new HttpException(e.getMessage());
             } finally {
                 response.close();

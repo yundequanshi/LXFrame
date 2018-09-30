@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.QueryMap;
 
 public interface API {
 
@@ -23,6 +24,9 @@ public interface API {
     Observable<List<String>> uploads(@Part List<MultipartBody.Part> file);
 
     //登陆
-    @POST("user/login")
     Observable<LoginData> login(@Body Map<String, String> map);
+
+    //添加表情
+    @POST("user/addComment")
+    Observable<Boolean> addComment(@Body Map<String, String> map);
 }

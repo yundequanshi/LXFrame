@@ -10,18 +10,14 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.OkHttpClient.Builder;
-import okhttp3.logging.HttpLoggingInterceptor;
-import okhttp3.logging.HttpLoggingInterceptor.Logger;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class HttpFactory {
 
     public static String HTTP_HOST_URL = "";
-    public static HttpResponse httpResponse = new HttpResponse();
-    public static HttpExceptionInterface httpExceptionInterface = null;
+    public static HttpResponseInterface httpResponseInterface = null;
 
     private HttpFactory() {
     }

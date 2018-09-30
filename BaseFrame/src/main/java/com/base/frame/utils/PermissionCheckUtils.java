@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
-import com.base.frame.R;
 import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -55,20 +54,19 @@ public class PermissionCheckUtils {
     private static void request(final OnPermissionGrantedListener grantedListener,
                                 final OnPermissionDeniedListener deniedListener,
                                 final @PermissionConstants.Permission String... permissions) {
-        com.blankj.utilcode.util.PermissionUtils.permission(permissions)
-                .rationale(new com.blankj.utilcode.util.PermissionUtils.OnRationaleListener() {
+        PermissionUtils.permission(permissions)
+                .rationale(new PermissionUtils.OnRationaleListener() {
                     @Override
-                    public void rationale(ShouldRequest shouldRequest) {
+                    public void rationale(PermissionUtils.OnRationaleListener.ShouldRequest shouldRequest) {
                         showRationaleDialog(shouldRequest);
                     }
                 })
-                .callback(new com.blankj.utilcode.util.PermissionUtils.FullCallback() {
+                .callback(new PermissionUtils.FullCallback() {
                     @Override
                     public void onGranted(List<String> permissionsGranted) {
                         if (grantedListener != null) {
                             grantedListener.onPermissionGranted();
                         }
-                        LogUtils.d(permissionsGranted);
                     }
 
                     @Override
@@ -93,12 +91,12 @@ public class PermissionCheckUtils {
         void onPermissionDenied();
     }
 
-    private static void showRationaleDialog(final com.blankj.utilcode.util.PermissionUtils.OnRationaleListener.ShouldRequest shouldRequest) {
+    private static void showRationaleDialog(final PermissionUtils.OnRationaleListener.ShouldRequest shouldRequest) {
         Activity topActivity = ActivityUtils.getTopActivity();
         if (topActivity == null) return;
         new AlertDialog.Builder(topActivity)
-                .setTitle(android.R.string.dialog_alert_title)
-                .setMessage("您已拒绝我们申请授权，请同意授权，否则该功能无法正常使用！")
+                .setTitle("权限提示")
+                .setMessage("请同意授权，否则该功能无法正常使用！")
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -121,12 +119,12 @@ public class PermissionCheckUtils {
         Activity topActivity = ActivityUtils.getTopActivity();
         if (topActivity == null) return;
         new AlertDialog.Builder(topActivity)
-                .setTitle(android.R.string.dialog_alert_title)
+                .setTitle("权限提示")
                 .setMessage("我们需要您拒绝的某些权限或系统无法应用失败，请手动设置为页面授权，否则该功能无法正常使用！")
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        com.blankj.utilcode.util.PermissionUtils.launchAppDetailsSettings();
+                        PermissionUtils.launchAppDetailsSettings();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
