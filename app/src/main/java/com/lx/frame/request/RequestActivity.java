@@ -8,12 +8,14 @@ import com.base.frame.http.HttpDisposable;
 import com.base.frame.http.HttpException;
 import com.base.frame.http.HttpFactory;
 import com.base.frame.http.HttpResponseInterface;
+import com.base.frame.httpError.HttpErrorDisposable;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.lx.frame.R;
 import com.lx.frame.common.APIConstants;
 import com.lx.frame.common.App;
 import com.lx.frame.common.HttpRequest;
+import com.lx.frame.common.HttpRequestError;
 import com.lx.frame.entity.LoginData;
 
 import java.util.HashMap;
@@ -32,7 +34,7 @@ public class RequestActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn1})
+    @OnClick({R.id.btn1, R.id.btn2, R.id.btn3})
     void allOnClick(View view) {
         switch (view.getId()) {
             //请求1
@@ -44,6 +46,10 @@ public class RequestActivity extends BaseActivity {
             case R.id.btn2:
                 ((App) getApplicationContext()).setHttpConfig();
                 request2();
+                break;
+            //请求3
+            case R.id.btn3:
+                request3();
                 break;
         }
     }
@@ -87,6 +93,26 @@ public class RequestActivity extends BaseActivity {
                 .login(map)
                 .compose(HttpFactory.<LoginData>schedulers())
                 .subscribe(new HttpDisposable<LoginData>() {
+                    @Override
+                    public void success(LoginData data) {
+
+                    }
+                });
+    }
+
+    /**
+     * 请求3
+     */
+    private void request3() {
+        Map<String, String> map = new HashMap<>();
+        map.put("phone", "15806692503");
+        map.put("password", "123456");
+        map.put("phoneInfo", "fp[dlfpss");
+        map.put("version", "1.0");
+        HttpRequestError.getInstance()
+                .login(map)
+                .compose(HttpFactory.<LoginData>schedulers())
+                .subscribe(new HttpErrorDisposable<LoginData>() {
                     @Override
                     public void success(LoginData data) {
 
