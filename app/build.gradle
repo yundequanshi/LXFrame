@@ -12,6 +12,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName =
+                    "LXFrame_${variant.mergedFlavor.versionCode}_${variant.mergedFlavor.versionName}_${variant.buildType.name}_${new Date().format('yyyyMMddHHmmss')}.apk"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
