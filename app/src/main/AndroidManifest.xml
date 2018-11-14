@@ -22,6 +22,9 @@
         <activity
             android:name=".request.RequestActivity"
             android:screenOrientation="portrait" />
+
+
+
         <activity
             android:name=".image.ImageActivity"
             android:screenOrientation="portrait" />
