@@ -1,8 +1,6 @@
 //apply plugin: 'com.android.application'
 //apply from: 'upload_nexus.gradle'
-apply plugin: 'com.github.dcendents.android-maven' // ADD THIS
 apply plugin: 'com.android.library'
-group = 'com.base.frame'
 
 android {
     compileSdkVersion 28
@@ -43,6 +41,10 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:3.11.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 }
+
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.github.yundequanshi'
 
 // 指定编码
 tasks.withType(JavaCompile) {
