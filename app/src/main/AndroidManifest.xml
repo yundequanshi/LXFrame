@@ -25,6 +25,14 @@
         <activity
             android:name=".image.ImageActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".arch.ArchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".arch.ArchActivity2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".arch.TabActivity"
+            android:screenOrientation="portrait" />
     </application>
-
 </manifest>
