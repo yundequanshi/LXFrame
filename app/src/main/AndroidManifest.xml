@@ -34,5 +34,12 @@
         <activity
             android:name=".arch.TabActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".scrollbar.ScrollBarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sidebar.SideBarActivity"
+            android:screenOrientation="portrait" />
     </application>
+
 </manifest>

@@ -40,6 +40,8 @@ dependencies {
     api 'io.reactivex.rxjava2:rxandroid:2.1.0'
     api 'com.squareup.okhttp3:okhttp:3.11.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    api 'com.github.promeg:tinypinyin:2.0.3'
+    api 'com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3'
 }
 
 apply plugin: 'com.github.dcendents.android-maven'

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--BCSideBar-->
+    <declare-styleable name="SideBar">
+        <attr format="color" name="side_text_color"/>
+    </declare-styleable>
+</resources>

@@ -13,6 +13,8 @@ import com.lx.frame.R;
 import com.lx.frame.arch.ArchActivity;
 import com.lx.frame.image.ImageActivity;
 import com.lx.frame.request.RequestActivity;
+import com.lx.frame.scrollbar.ScrollBarActivity;
+import com.lx.frame.sidebar.SideBarActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,7 +24,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.lv_main)
     ListView lvMain;
 
-    private String[] data = {"请求", "选择图片并上传", "arch event"};
+    private String[] data = {"请求", "选择图片并上传", "arch event", "ScrollBar", "SideBar"};
     private long exitTime = 0;
 
     @Override
@@ -44,6 +46,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 2:
                         StartToActivity(ArchActivity.class);
+                        break;
+                    case 3:
+                        StartToActivity(ScrollBarActivity.class);
+                        break;
+                    case 4:
+                        StartToActivity(SideBarActivity.class);
                         break;
                 }
             }
