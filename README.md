@@ -1,7 +1,4 @@
-
-
 ## 介绍
-
 ### BaseFrame
 * Utils 方法类
 
@@ -27,16 +24,16 @@
 
   功能列表：https://qmuiteam.com/android/documents/
 
-* ```css
-  
-  allprojects {
-  		repositories {
-              maven{ url 'https://jitpack.io'}
-  		}
-  	}
-  
-  dependencies {
-  	        implementation 'com.github.yundequanshi:LXFrame:V0.0.1-release'
-  	}
-  
-  ```
+* > ``` java
+  > 
+  > allprojects {
+  > 		repositories {
+  > 			maven { url 'https://jitpack.io' }
+  > 		}
+  > 	}
+  > 
+  > dependencies {
+  > 	        implementation 'com.github.yundequanshi:LXFrame:V0.0.1-release'
+  > 	}
+  > 
+  > ```
