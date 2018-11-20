@@ -22,4 +22,11 @@ public class SideBarData implements Serializable, Comparable<SideBarData> {
     public int compareTo(@NonNull SideBarData another) {
         return this.index.compareTo(another.index);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        SideBarData data = (SideBarData) obj;
+        return this.index.equals(data.index)
+                && this.name.equals(data.name);
+    }
 }

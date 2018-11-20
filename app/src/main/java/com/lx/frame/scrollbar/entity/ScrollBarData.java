@@ -24,4 +24,11 @@ public class ScrollBarData implements Serializable , Comparable<ScrollBarData>{
     public int compareTo(@NonNull ScrollBarData another) {
         return this.index.compareTo(another.index);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        ScrollBarData data = (ScrollBarData) obj;
+        return this.index.equals(data.index)
+                && this.name.equals(data.name);
+    }
 }

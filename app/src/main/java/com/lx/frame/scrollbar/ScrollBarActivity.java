@@ -45,7 +45,12 @@ public class ScrollBarActivity extends BaseActivity {
         String[] stringData = {"济南", "北京", "上海", "淄博", "高密", "青岛", "重庆", "大连", "临沂", "天津", "章丘", "齐河",
                 "东北", "西藏", "苏州", "杭州", "漳州", "湖州", "甘肃"};
         for (String name : stringData) {
-            data.add(new ScrollBarData(String.valueOf(Pinyin.toPinyin(name.charAt(0)).charAt(0)), name));
+            String index = String.valueOf(Pinyin.toPinyin(name.charAt(0)).charAt(0));
+            ScrollBarData sideBarData = new ScrollBarData(index, "");
+            if (!data.contains(sideBarData)) {
+                data.add(sideBarData);
+            }
+            data.add(new ScrollBarData(index, name));
         }
         Collections.sort(data);
         return data;
