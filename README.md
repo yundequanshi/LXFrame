@@ -28,16 +28,15 @@
   功能列表：https://qmuiteam.com/android/documents/
 
 * ```css
+  
   allprojects {
   		repositories {
   			maven { url 'https://jitpack.io' }
   		}
   	}
   
-  ```
-
-* ```css
   dependencies {
   	        implementation 'com.github.yundequanshi:LXFrame:V0.0.1-release'
   	}
+  
   ```
