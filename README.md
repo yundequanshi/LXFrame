@@ -33,7 +33,7 @@
   > 	}
   > 
   > dependencies {
-  > 	        implementation 'com.github.yundequanshi:LXFrame:V0.0.1-release'
+  > 	        implementation 'com.github.yundequanshi:LXFrame:V0.0.2-release'
   > 	}
   > 
   > ```
