@@ -42,7 +42,7 @@ public class ScrollBarActivity extends BaseActivity {
     private List<ScrollBarData> getData() {
         Pinyin.init(Pinyin.newConfig().with(CnCityDict.getInstance(this)));
         List<ScrollBarData> data = new ArrayList<>();
-        String[] stringData = {"济南", "北京", "上海", "淄博", "高密", "青岛", "重庆", "大连", "临沂", "天津", "章丘", "齐河",
+        String[] stringData = {"济南", "北京", "上海", "淄瑞特干活吗，博", "高密", "青岛", "重庆", "大连", "临沂", "天津", "章丘", "齐河",
                 "东北", "西藏", "苏州", "杭州", "漳州", "湖州", "甘肃"};
         for (String name : stringData) {
             String index = String.valueOf(Pinyin.toPinyin(name.charAt(0)).charAt(0));
